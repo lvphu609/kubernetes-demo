@@ -55,7 +55,7 @@ kubectl scale --replicas=3 deployment/hello-service
 ```
 - Delete a specific pod:
 ```
-kubectl delete <pod_name>
+kubectl delete pod <pod_name>
 ```
 - Get service information in the current namespace:
 ```
@@ -63,11 +63,11 @@ kubectl get services
 ```
 - Get detail information about a specific pod:
 ```
-kubectl describe <pod_name>
+kubectl describe pod <pod_name>
 ```
 - Get detail information about a specific service:
 ```
-kubectl describe hello-service
+kubectl describe service <service_name>
 ```
 - In the case you use Minikube, use this command to get accessible URL of the service, then you could access with your browser:
 ```
