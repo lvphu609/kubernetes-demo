@@ -37,9 +37,25 @@ kubectl apply -f target/kubernetes/kubernetes.yml
 kubectl delete -f target/kubernetes/kubernetes.yml
 ```
 ## Using the application on Kubernetes
+- Open default Kubernetes Dashboard:
+```
+minikube dashboard
+```
 - Get pods information in the current namespace:
 ```
 kubectl get pods
+```
+- Get deployment information in the current namespace:
+```
+kubectl get deployments
+```
+- Scale a specific deployment to 3 instances:
+```
+kubectl scale --replicas=3 deployment/hello-service
+```
+- Delete a specific pod:
+```
+kubectl delete <pod_name>
 ```
 - Get service information in the current namespace:
 ```
@@ -51,13 +67,17 @@ kubectl describe <pod_name>
 ```
 - Get detail information about a specific service:
 ```
-kubectl describe <service_name>
-```
-- Delete a specific pod:
-```
-kubectl delete <pod_name>
+kubectl describe hello-service
 ```
 - In the case you use Minikube, use this command to get accessible URL of the service, then you could access with your browser:
 ```
 minikube service hello-service --url
+```
+- Update service to a newer version by rolling update:
+```
+kubectl set image deployment/hello-service hello-service=lvphu/hello-service:1.1.0
+```
+- Undo an update (like Ctrl-Z):
+```
+kubectl rollout undo deployment/hello-service
 ```
