@@ -32,3 +32,32 @@ mvn clean package -Dquarkus.container-image.build=true
 ```
 kubectl apply -f target/kubernetes/kubernetes.yml
 ```
+- Delete all related resources in Kubernetes:
+```
+kubectl delete -f target/kubernetes/kubernetes.yml
+```
+## Using the application on Kubernetes
+- Get pods information in the current namespace:
+```
+kubectl get pods
+```
+- Get service information in the current namespace:
+```
+kubectl get services
+```
+- Get detail information about a specific pod:
+```
+kubectl describe <pod_name>
+```
+- Get detail information about a specific service:
+```
+kubectl describe <service_name>
+```
+- Delete a specific pod:
+```
+kubectl delete <pod_name>
+```
+- In the case you use Minikube, use this command to get accessible URL of the service, then you could access with your browser:
+```
+minikube service hello-service --url
+```
